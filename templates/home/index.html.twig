@@ -5,7 +5,7 @@
 {% block stylesheets %}
 
     <style>
-        body { background-color : gold;}
+        {# body { background-color : gold;} #}
     </style>
 
 {% endblock %}
@@ -21,17 +21,22 @@
         <h6 style="color:purple;">l'age = {{ myage }}</h6>
     {% endif %}
     
-    {% for prenom, age in myPrenoms %}
-        <div>
-            {% if loop.first %}
-                <h1 style="color:purple;">la 1ère</h1>
-            {% elseif loop.last %}
-                <h1 style="color:green;">la dernière</h1>
-            {% endif %}
-            <h1>{{ loop.index }} / {{loop.length}} - Prénom : {{ prenom }}</h1>
-            <h3>Age : {{ age }} ans </h3>
-        </div>
-    {% endfor %}
+    <div class="row mx-3">
+        {% for prenom, age in myPrenoms %}
+            <div class="col-md-4 my-3">
+            <div class="card">
+                    {% if loop.first %}
+                        <h1 style="color:purple;">la 1ère</h1>
+                    {% elseif loop.last %}
+                        <h1 style="color:green;">la dernière</h1>
+                    {% endif %}
+                
+                    <h1>{{ loop.index }} / {{loop.length}} - Prénom : {{ prenom }}</h1>
+                    <h3>Age : {{ age }} ans </h3>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
     <ul>
         {% for compteur in 0..10 %}
             <li>{{ compteur }}</li>
@@ -40,7 +45,7 @@
     {% set nom = "Naert" %}
     <h1>Bonjour {{nom}}</h1>
 
-    <a href="{{ path('app_test')}}">La page test</a>
+    <a href="{{ path('app_test')}}" class="btn btn-primary my-3 mx-3">La page test</a>
 {% endblock %}
 {% block Sebastien %}
     <h2>Contenu du block Sebastien du controller: {{controller_name}}</h2>
