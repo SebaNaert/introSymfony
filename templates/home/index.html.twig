@@ -51,4 +51,10 @@
     <h2>Contenu du block Sebastien du controller: {{controller_name}}</h2>
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        console.log("Hello HomeController !");
+    </script>
+{% endblock %}
 {# commentaire #}
